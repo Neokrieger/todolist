@@ -1,23 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import SubmitBar from './submitBar'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <p id="title">
+          Yet another to do List!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SubmitBar />
     </div>
   );
 }
