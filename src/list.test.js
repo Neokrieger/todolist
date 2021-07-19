@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import SubmitBar from './submitBar'
+import List from './list'
 
 test('render submitBar', () => {
-  render(<SubmitBar />);
+  render(<List />);
   const submitElement = screen.getByLabelText("To Do:");
   expect(submitElement).toBeInTheDocument();
 });

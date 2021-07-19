@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
-import SubmitBar from './submitBar'
+import List from './list'
+
+let list = new List();
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <p id="title">
           Yet another to do List!
         </p>
-        <SubmitBar />
+        <List />
     </div>
   );
 }
