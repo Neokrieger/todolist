@@ -6,6 +6,7 @@ class List extends Component{
         this.state = {
           list : [],
           userInput : '',
+          check: true
         }
     }
     change = (input) =>{
@@ -22,18 +23,16 @@ class List extends Component{
     boolCheck(value){
       if(value.bool){
         value.bool = false;
-        value.text = "dfsdfsdfsdfsdfsd"
-        console.log(value.text)
 
       }
       else{
         value.bool = true;
-        value.text = "dfsdfsdfsdfsdfsd"
-        console.log(value.text)
 
       }
       console.log(value.bool);
+      this.setState({check: value.bool})
     }
+
 
 
     render(){
@@ -48,7 +47,10 @@ class List extends Component{
             <button type="submit" value="Submit" onClick={this.add}>Submit</button>
 
             <ul>
-            {this.state.list.map((v)=> <div><input type="checkbox" defaultChecked={v.bool} value={v.text} onChange={()=>this.boolCheck(v)}/>{}</div>)}
+            {this.state.list.map((v)=> <div style={{textDecorationLine: v.bool ? 'line-through' : ''}}>
+              <input type="checkbox" defaultChecked={v.bool}  onClick={()=>this.boolCheck(v)}/>
+              {v.text}
+              </div>)}
             </ul>
 
             </div>
