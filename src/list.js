@@ -3,27 +3,56 @@ import React, {Component} from 'react';
 class List extends Component{
     constructor(props){
         super(props)
-        this._list = [];
+        this.state = {
+          list : [],
+          userInput : '',
+        }
+    }
+    change = (input) =>{
+      this.setState({userInput: input})
     }
 
-    add(){
-        // this._list.push(item)
-        // console.log(this._list)
-        // console.log(item)
-        return(
-            <h1>please print this</h1>
-        )
+    add = () => {
+      let newList = this.state.list;
+      newList.push({text:this.state.userInput, bool: false});
+      this.setState({list: newList, userInput: ''});
+      console.log(this.state.list);
     }
+
+    boolCheck(value){
+      if(value.bool){
+        value.bool = false;
+        value.text = "dfsdfsdfsdfsdfsd"
+        console.log(value.text)
+
+      }
+      else{
+        value.bool = true;
+        value.text = "dfsdfsdfsdfsdfsd"
+        console.log(value.text)
+
+      }
+      console.log(value.bool);
+    }
+
 
     render(){
         return (
-            <form id="submitBar" name="submitBar">
+            <div>
                 <label>
                 To Do:
-            <input type="text" placeholder="Enter item here" name="name" />
+            <input type="text" onChange={(e) => this.change(e.target.value)}
+            placeholder="Enter item here" value={this.state.userInput} />
+
                 </label>
-            <button type="submit" value="Submit" onClick={() => this.add()}>Submit</button>
-            </form>
+            <button type="submit" value="Submit" onClick={this.add}>Submit</button>
+
+            <ul>
+            {this.state.list.map((v)=> <div><input type="checkbox" defaultChecked={v.bool} value={v.text} onChange={()=>this.boolCheck(v)}/>{}</div>)}
+            </ul>
+
+            </div>
+
         )
     }
 }
